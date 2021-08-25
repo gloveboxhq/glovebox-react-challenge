@@ -1,17 +1,27 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useDispatch, useSelector} from 'react'
 
 import provider from '../data/provider'
+import * as actions from '../actions/actions';
 
 const Page = ()=>{
+	const dispatch = useDispatch();
+	
+
 	useEffect(()=>{
 		(async ()=>{
 			const policies = await provider.getPolicies()
 
 			// store these policies in redux and make them available to the Page component with useSelector
-
+			for (const policy of policies) {
+				// add each policy to state
+				dispatch(actions.addPolicyActionCreator(policy));
+			}
+			
 			console.log('policies:',policies)
 		})()
 	})
+
+	const policies = useSelector((state) => state.policies);
 
 	return (
 		<div className="page">
