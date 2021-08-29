@@ -1,6 +1,6 @@
 import {createStore} from 'redux'
 
-import * as types from 'actions/actions';
+import * as types from './constants/actionTypes';
 
 const initialState = {
   policies: []
