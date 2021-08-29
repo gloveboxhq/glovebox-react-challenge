@@ -10,7 +10,8 @@ const Page = ()=>{
 
 	useEffect(()=>{
 		(async ()=>{
-			const policies = await provider.getPolicies()
+			const policies = await provider.getPolicies();
+			const policyTypes = await provider.getPolicyTypes();
 
 			// store these policies in redux and make them available to the Page component with useSelector
 			for (const policy of policies) {
@@ -31,10 +32,13 @@ const Page = ()=>{
 		// key: carrier ID
 		// value: array of policies with matching carrier ID
 	policies.forEach(policy => {
+		// console.log(policy);
 		const id = policy.carrierID;
-		if (!carriers.hasOwnProperty[id]) {
+		if (!carriers[id]) {
+			console.log('Adding new carrier:' + policy)
 			carriers[id] = [ policy ];
 		} else {
+			console.log('Adding to existing carrier:' + carriers[id])
 			carriers[id].push(policy);
 		}
 	})
@@ -44,6 +48,7 @@ const Page = ()=>{
 	// create div for each carrier
 	const carrierList = Object.keys(carriers).map(carrier => {
 		// create list item for each policy, grouped by carrier
+		// console.log(carriers[carrier]);
 		const policiesByCarrier = carriers[carrier].map(policy => {
 			const name = `${policy.primaryHolder.firstName} ${policy.primaryHolder.lastName}`
 			return (
@@ -52,12 +57,14 @@ const Page = ()=>{
 					<p>Type: {policy.type.name}</p>
 					<p>Primary holder: {name}</p>
 					<p>Agency: {policy.agencyName}</p>
-					<p><button>Edit</button></p>
+					<div className="button-wrapper">
+						<button>Edit</button>
+					</div>
 				</li>
 			)
 		});
 		return (
-			<div>
+			<div className="carrier">
 				<h3>{carrier}</h3>
 				<ul>
 					{policiesByCarrier}
