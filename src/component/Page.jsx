@@ -7,7 +7,6 @@ import * as actions from '../actions/actions';
 const Page = () => {
 	const dispatch = useDispatch();
 	
-
 	useEffect(() => {
 		(async () => {
 			const policies = await provider.getPolicies();
@@ -18,7 +17,7 @@ const Page = () => {
 				// add each policy to state
 				dispatch(actions.addPolicyActionCreator(policy));
 			}
-
+			// add all policy types to state
 			for (const policyType of policyTypes) {
 				dispatch(actions.addPolicyTypeActionCreator(policyType));
 			}
@@ -26,8 +25,9 @@ const Page = () => {
 			console.log('Policy types: ' + policyTypes);
 
 		})()
-	}, [dispatch]);
+	}, []);
 
+	// make redux store accessible
 	const policies = useSelector(state => state.policies);
 	const updateForms = useSelector(state => state.updateForms);
 	const policyTypes = useSelector(state => state.policyTypes);
@@ -47,7 +47,10 @@ const Page = () => {
 		}
 	})
 
-	// in production, would modularize carriers list, but for sake of time will keep everything confined to Page.jsx
+	// NOTE: in production, would heavily modularize this app, but for sake of time will keep everything confined to Page.jsx
+	// would likely want separate jsx modules for Page, CarrierList, Carrier, Policy, and UpdateForm
+
+	/* EVENT HANDLERS */
 
 	// click handler for edit button
 	const editButtonClick = (renderForm, policyNumber) => {
@@ -57,6 +60,7 @@ const Page = () => {
 		return;
 	}
 
+	// click handler for save button
 	const saveButtonClick = (renderForm, policyNumber) => {
 		console.log('In saveButtonClick')
 		// grab value of select and pass into dispatch as policyType
@@ -64,12 +68,15 @@ const Page = () => {
 		const typeID = select.options[select.selectedIndex].value;
 		const typeName = select.options[select.selectedIndex].text;
 		const policyType = { id: typeID, name: typeName }
+		// dispatch actions to update policy type in state and de-render update form
 		dispatch(actions.updatePolicyTypeActionCreator(policyNumber, policyType));
 		dispatch(actions.renderTypeUpdateFormActionCreator(policyNumber));
 		return;
 	}
 
-	// conditionally render type update form if edit button has been clicked
+	/* DOM architecture */
+
+	// update form component (only rendered if edit button has been clicked)
 	const UpdateForm = props => {
 		if (props.renderForm) {
 			const typesArray = policyTypes.map(policyType => {
@@ -112,7 +119,7 @@ const Page = () => {
 					renderForm = updateForm.renderForm;
 				}
 			}
-			// generate list item containing all necessary fields
+			// generate list item containing all necessary fields, including UpdateForm as defined above
 			return (
 				<li>
 					<p>Policy number: {policyNumber}</p>
@@ -139,7 +146,7 @@ const Page = () => {
 			</div>
 		)
 	});
-	// generate containers for each carrier
+	// generate parent DOM container for page, with containers for each carrier
 	return (
 		<div className="page">
 			<h2>Carriers</h2>
