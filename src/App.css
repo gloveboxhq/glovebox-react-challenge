@@ -17,7 +17,6 @@ body {
 h2 {
   color: rgb(28, 28, 173);
   margin-top: 0;
-  font-size: 1.5vh;
 }
 
 .carrier {
@@ -54,12 +53,13 @@ p {
 
 .button-wrapper {
   margin-bottom: 12px;
+  display: flex;
 }
 
 button {
   border: none;
-  background: green;
-  color: white;
+  /* background: green;
+  color: white; */
   font-family: 'Ubuntu', sans-serif;
   font-weight: lighter;
   font-size: 14;
@@ -68,4 +68,20 @@ button {
   width: 60px;
   border-radius: 24px;
   box-shadow: 2px 1px 8px 1px rgb(180, 199, 211);
+}
+
+.edit-button {
+  background: rgb(28, 28, 173);
+  color: white;
+}
+
+#select-policy-type {
+  height: 80%;
+  margin-left: 12px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.save-button {
+  background: green;
+  color: white;
 }
