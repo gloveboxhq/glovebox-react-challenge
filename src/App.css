@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap');
+
 body {
     margin-top: 4rem;
+    margin-bottom: 4rem;
     background-image: url('./assets/bg.webp');
-    font: 100% "Open sans", "Trebuchet MS", sans-serif;
+    font-family: 'Gemunu Libre', sans-serif;
 }
 
 a {
@@ -11,11 +14,13 @@ a {
 h2,
 p {
     text-align: center;
+    font-size: 1.7rem;
 }
 
 .container {
-    margin-right: 50px;
-    margin-left: 50px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
     max-width: 75rem;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
@@ -31,6 +36,7 @@ p {
     background-color: #151515;
     box-shadow: inset 0 -1px #1d1d1d;
     transition: all 0.25s ease-in;
+    font-size: 1.4rem;
 }
 
 .nav a:focus,

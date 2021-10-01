@@ -10,13 +10,13 @@ export default function CarrierList() {
 
     return (
         <>
-            <div className="container" role="banner">
             {
                 selectedPolicy && <EditPolicy
                     selectedPolicy={selectedPolicy}
                     hidePopup={() => setSelectedPolicy(null)}
                 />
             }
+            <div className="container" role="hero">
                 <div className="header">
                     <h2>GloveBox Carriers</h2>
                     <p>View Policies by Carrier</p>
@@ -27,7 +27,6 @@ export default function CarrierList() {
                             const item = policiesGrouped[key];
                             return (
                                 <List
-                                    type="group"
                                     item={index}
                                     index={index}
                                     listLabel={key}
@@ -36,10 +35,6 @@ export default function CarrierList() {
                                         <ListItem
                                             key={pIndex}
                                             onEdit={() => setSelectedPolicy(policy)}
-                                            policyNum={policy.policyNumber}
-                                            name={`${policy.primaryHolder.firstName} ${policy.primaryHolder.lastName}`}
-                                            type={policy.type.name}
-                                            agencyName={policy.agencyName}
                                             text={`${policy.policyNumber}, ${policy.type.name}, ${`${policy.primaryHolder.firstName} ${policy.primaryHolder.lastName}`}, \n ${policy.agencyName}`}
                                         />
                                     ))}

@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ListItem({ text, onEdit }) {
-    // const { policyNum, name, type, agencyName } = props
 
     return (
         <li className="listItem">
