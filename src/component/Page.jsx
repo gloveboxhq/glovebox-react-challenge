@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setPolicies } from '../utils/helpers'
-import provider from '../data/provider'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPolicies } from '../utils/helpers';
+import CarrierList from './CarrierList/CarrierList'
+import provider from '../data/provider';
 
 const Page = () => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
+
 	useEffect(() => {
 		(async () => {
 			const policies = await provider.getPolicies();
@@ -14,15 +16,15 @@ const Page = () => {
 				policies,
 				policyTypes
 			}))
-			console.log('policies:', policies)
-			console.log('policyTypes:', policyTypes)
 		})()
 	}, [])
 
-	
+	const policiesGrouped = useSelector(state => state.policiesGrouped);
+	console.log(policiesGrouped)
 	return (
 		<div className="page">
-			<h2>Carriers</h2>
+			<CarrierList />
+			{/* <h2>Carriers</h2>
 			<p>View the readme for instructions</p>
 			<div>
 				<h3>Carrier 1</h3>
@@ -49,7 +51,7 @@ const Page = () => {
 						<button>Edit</button>
 					</li>
 				</ul>
-			</div>
+			</div> */}
 		</div>
 
 	)
