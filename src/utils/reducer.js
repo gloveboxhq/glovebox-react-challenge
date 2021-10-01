@@ -6,6 +6,7 @@ const initialState = {
     policiesGrouped: {}
 }
 
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
 
@@ -18,21 +19,21 @@ const reducer = (state = initialState, action) => {
                 if (!groupPolicies[policy.carrierID]) {
                     groupPolicies[policy.carrierID] = [];
 
-                    groupPolicies[policy.carrierID].push(policy);
                 }
-            });
 
+                groupPolicies[policy.carrierID].push(policy);
+            })
             return {
                 ...state,
                 policies: policies,
                 policyTypes: policyTypes,
-                policiesGrouped: {}
+                policiesGrouped: groupPolicies
             }
         }
 
         case policiesObj.UPDATE_POLICIES: {
             const policyMap = state.policies.map(policy => {
-                if(policy.policyNumber === action.payload.poliicyNumber) {
+                if (policy.policyNumber === action.payload.poliicyNumber) {
                     return action.payload.policy;
                 }
 
@@ -40,7 +41,7 @@ const reducer = (state = initialState, action) => {
             })
 
             const groupMap = state.policiesGrouped[action.payload.policyGroup].map(item => {
-                if(item.policyNumber === action.payload.policyNumber) {
+                if (item.policyNumber === action.payload.policyNumber) {
                     return action.payload.policy;
                 }
 
