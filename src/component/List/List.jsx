@@ -11,7 +11,7 @@ export default function List({
         <li>
             <input id={`${type}-${item}`} type="checkbox" hidden />
             <label htmlFor={`${type}-${item}`}>
-                <span ><img src={arrowDown} /></span>
+                <span ><img src={arrowDown} alt="down arrow"/></span>
                 {listLabel}
             </label>
             <ul className={`${type}-list`} alt="">

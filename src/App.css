@@ -1,5 +1,5 @@
 body {
-    margin-top: 2rem;
+    margin-top: 4rem;
     background-image: url('./assets/bg.webp');
     font: 100% "Open sans", "Trebuchet MS", sans-serif;
 }
@@ -14,8 +14,8 @@ p {
 }
 
 .container {
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 50px;
+    margin-left: 50px;
     max-width: 75rem;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
@@ -25,6 +25,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: 3.5rem;
     padding: 0.85rem;
     color: #fff;
     background-color: #151515;
@@ -79,46 +80,11 @@ li {
     background: #131313;
 }
 
-/**
-    * Styling second level list items
-    */
-.sub-group-list a,
-.sub-group-list label {
-    padding-left: 4rem;
-    background: #353535;
-    box-shadow: inset 0 -1px #474747;
-}
-
-.sub-group-list a:focus,
-.sub-group-list a:hover,
-.sub-group-list label:focus,
-.sub-group-list label:hover {
-    background: #232323;
-}
-
-/**
-    * Styling third level list items
-    */
-.sub-sub-group-list a,
-.sub-sub-group-list label {
-    padding-left: 6rem;
-    background: #454545;
-    box-shadow: inset 0 -1px #575757;
-}
-
-.sub-sub-group-list a:focus,
-.sub-sub-group-list a:hover,
-.sub-sub-group-list label:focus,
-.sub-sub-group-list label:hover {
-    background: #333333;
-}
 
 /**
     * Hide nested lists
     */
-.group-list,
-.sub-group-list,
-.sub-sub-group-list {
+.group-list {
     height: 100%;
     max-height: 0;
     overflow: hidden;
@@ -165,7 +131,43 @@ label>span {
     padding: 3px 15px;
 }
 
-.soc-media {
+/* Styling for edit form */
+.policyEditForm {
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: #00000073;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.policyEditForm form .formContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.policyEditForm>form>p {
+    margin: 0 0 10px 0;
+}
+
+.policyEditForm form {
+    width: 80%;
+    padding: 15px;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 25%);
+}
+
+.policyEditForm form select {
+    flex: 1;
+    flex-wrap: wrap;
+    margin: 5px 18px 5px 0;
+    border: 2px solid #cecdcd;
+    padding: 5px;
+    border-radius: 3px;
 }

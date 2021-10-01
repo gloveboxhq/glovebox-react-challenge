@@ -40,19 +40,20 @@ const reducer = (state = initialState, action) => {
                 return policy;
             })
 
-            const groupMap = state.policiesGrouped[action.payload.policyGroup].map(item => {
-                if (item.policyNumber === action.payload.policyNumber) {
-                    return action.payload.policy;
+            const groupMap = state.policiesGrouped[action.payload.selectedPolicy.carrierID].map(item => {
+                if (item.policyNumber === action.payload.selectedPolicy.policyNumber) {
+                    return action.payload.selectedPolicy;
                 }
 
                 return item;
-            })
+            });
+
             return {
                 ...state,
                 policies: policyMap,
                 policiesGrouped: {
                     ...state.policiesGrouped,
-                    [state.policiesGrouped[action.payload.policyGroup]]: groupMap
+                    [action.payload.selectedPolicy.carrierID]: groupMap
                 }
             }
         }

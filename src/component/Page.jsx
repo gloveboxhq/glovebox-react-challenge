@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setPolicies } from '../utils/helpers';
 import CarrierList from './CarrierList/CarrierList'
 import provider from '../data/provider';
@@ -17,7 +17,7 @@ const Page = () => {
 				policyTypes
 			}))
 		})()
-	}, [])
+	})
 
 	
 	return (
