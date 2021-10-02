@@ -1,1 +1,179 @@
-*{}
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap');
+
+body {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    background-image: url('./assets/bg.webp');
+    font-family: 'Gemunu Libre', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+h2,
+p {
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+.container {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 75rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.nav a,
+.nav label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 3.5rem;
+    padding: 0.85rem;
+    color: #fff;
+    background-color: #151515;
+    box-shadow: inset 0 -1px #1d1d1d;
+    transition: all 0.25s ease-in;
+    font-size: 1.2rem;
+}
+
+.nav a:focus,
+.nav a:hover,
+.nav label:focus,
+.nav label:hover {
+    color: rgba(255, 255, 255, 0.5);
+    background: #030303;
+}
+
+.nav a:focus,
+.nav a:hover>span:nth-child(2) {
+    color: rgba(255, 255, 255, 1);
+}
+
+.nav label {
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+}
+
+ul,
+li {
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+/**
+   * Styling first level lists items
+   */
+.group-list a,
+.group-list label {
+    padding-left: 2rem;
+    background: #252525;
+    box-shadow: inset 0 -1px #373737;
+}
+
+.group-list a:focus,
+.group-list a:hover,
+.group-list label:focus,
+.group-list label:hover {
+    background: #131313;
+}
+
+
+/**
+    * Hide nested lists
+    */
+.group-list {
+    height: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.nav__list input[type=checkbox]:checked+label+ul {
+    /* reset the height when checkbox is checked */
+    max-height: 1000px;
+}
+
+.listItem>a {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listItem>a>span:nth-child(1) {
+    flex: 1
+}
+
+.listItem>a>span:nth-child(2) {
+    padding: 0 5px 5px 5px;
+}
+
+/**
+    * Rotating chevron icon
+    */
+label>span>img {
+    width: 10px;
+}
+
+label>span {
+    float: right;
+    transition: transform 0.65s ease;
+}
+
+.nav__list input[type=checkbox]:checked+label>span {
+    transform: rotate(90deg);
+}
+
+.header {
+    background-color: #f7f7f7;
+    color: #151515;
+    padding: 3px 15px;
+}
+
+/* Styling for edit form */
+.policyEditForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: #00000073;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.policyEditForm form .formContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.policyEditForm>form>p {
+    margin: 0 0 10px 0;
+}
+
+.policyEditForm form {
+    width: 80%;
+    padding: 15px;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 25%);
+}
+
+.policyEditForm form select {
+    flex: 1;
+    flex-wrap: wrap;
+    margin: 5px 18px 5px 0;
+    border: 2px solid #cecdcd;
+    padding: 5px;
+    border-radius: 3px;
+}
