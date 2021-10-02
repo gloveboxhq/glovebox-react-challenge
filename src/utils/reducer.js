@@ -22,6 +22,7 @@ const reducer = (state = initialState, action) => {
                 }
 
                 groupPolicies[policy.carrierID].push(policy);
+
             })
             return {
                 ...state,
@@ -33,7 +34,7 @@ const reducer = (state = initialState, action) => {
 
         case policiesObj.UPDATE_POLICIES: {
             const policyMap = state.policies.map(policy => {
-                if (policy.policyNumber === action.payload.poliicyNumber) {
+                if (policy.policyNumber === action.payload.policyNumber) {
                     return action.payload.policy;
                 }
 
